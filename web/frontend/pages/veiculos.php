@@ -84,37 +84,58 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Dados Usuario</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Dados Veículo</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <link rel="stylesheet" href="../css/style.css">
 
-            <form action="../../backend/createUser.php" method="POST">
+            <form action="../../backend/createVei.php" method="POST">
               <div class="modal-body">
                 <div class="form-group">
-                  <label for="nome">Nome</label>
-                  <input type="text" name="nome" class="form-control">
+                  <label for="nome">Tipo</label>
+                  <select name="tipo" id="tipo" class="form-control">
+                  <option value="Caminhao">Caminhão</option>
+                  <option value="Caminhonete">Caminhonete</option>
+                  <option value="Onibus">Ônibus</option>
+                  <option value="Carro">Carro</option>
+                  <option value="Moto">Moto</option>
+                  </select>
                 </div>
                 <div class="form-group">
-                  <label for="">Login</label>
-                  <input type="text" name="usuario" class="form-control">
+                  <label for="">Marca</label>
+                  <input type="text" name="marca" class="form-control">
                 </div>
                 <div class="form-group">
-                  <label for="">Senha</label>
-                  <input type="password" name="password" class="form-control">
+                  <label for="">Modelo</label>
+                  <input type="text" name="modelo" class="form-control">
                 </div>
                 <div class="form-group">
-                  <label for="">Confirmar Senha</label>
-                  <input type="password" name="Cpassword" class="form-control">
+                  <label for="cor">Cor</label>
+                  <select name="cor" id="cor" class="form-control">
+                  <option value="Amarelo">Amarelo</option>
+                  <option value="Azul">Azul</option>
+                  <option value="Prata">Prata</option>
+                  <option value="Preto">Preto</option>
+                  <option value="Verde">Verde</option>
+                  <option value="Vermelho">Vermelho</option>
+                  </select>
                 </div>
                 <div class="form-group">
-                  <label for="">Tipo</label>
-                  <input type="text" class="form-control">
+                  <label for="">Ano</label>
+                  <input type="text" name="ano" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="">Roda</label>
+                  <input type="text" name="roda" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="">Placa</label>
+                  <input type="text" name="placa" class="form-control">
                 </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="submit" class="btn btn-primary" name="salvar_usuario">Salvar</button>
+                <button type="submit" class="btn btn-primary" name="salvar_veiculo">Salvar</button>
               </div>
             </form>
           </div>
@@ -131,29 +152,41 @@
             </div>
             <link rel="stylesheet" href="../css/style.css">
 
-            <form action="../../backend/createUser.php" method="POST">
+            <form action="../../backend/createVei.php" method="POST">
               <div class="modal-body">
                 <input type="hidden" name="edit_id" id="edit_id">
                 <div class="form-group">
-                  <label for="nome">Nome</label>
-                  <input type="text" id="edit_name" name="nome" class="form-control">
+                  <label for="nome">Tipo</label>
+                  <input type="text" id="edit_tipo" name="edit_tipo" class="form-control">
                 </div>
                 <div class="form-group">
-                  <label for="">Login</label>
-                  <input type="text" id="edit_usuario" name="usuario" class="form-control">
+                  <label for="">Marca</label>
+                  <input type="text" id="edit_marca" name="edit_marca" class="form-control">
                 </div>
                 <div class="form-group">
-                  <label for="">Senha</label>
-                  <input type="password" id="edit_senha" name="password" class="form-control">
+                  <label for="">Modelo</label>
+                  <input type="text" id="edit_modelo" name="edit_modelo" class="form-control">
                 </div>
                 <div class="form-group">
-                  <label for="">Tipo</label>
-                  <input type="text" class="form-control" id="edit_tipo">
+                  <label for="">Ano</label>
+                  <input type="text" id="edit_ano" name="edit_ano" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="">Cor</label>
+                  <input type="text" id="edit_cor" name="edit_cor"class="form-control" >
+                </div>
+                <div class="form-group">
+                  <label for="">Roda</label>
+                  <input type="text" id="edit_roda" name="edit_roda"class="form-control" >
+                </div>
+                <div class="form-group">
+                  <label for="">Placa</label>
+                  <input type="text" id="edit_placa" name="edit_placa"class="form-control" >
                 </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="submit" class="btn btn-primary" name="update_usuario">Atualizar</button>
+                <button type="submit" class="btn btn-primary" name="update_veiculo">Atualizar</button>
               </div>
             </form>
           </div>
@@ -327,23 +360,26 @@
       $('.edit_btn').click(function(e) {
         e.preventDefault();
 
-        var usuario_id = $(this).closest('tr').find('.usuario_id').text();
+        var veiculo_id = $(this).closest('tr').find('.veiculo_id').text();
 
         $.ajax({
           type: "POST",
-          url: "../../backend/createUser.php",
+          url: "../../backend/createVei.php",
           data: {
             'checking_Editbtn': true,
-            'usuario_id': usuario_id,
+            'veiculo_id': veiculo_id,
           },
           success: function(response) {
             console.log(response)
             $.each(response, function(key, value) {
-              $('#edit_id').val(value['idusuario'])
-              $('#edit_name').val(value['nome'])
-              $('#edit_usuario').val(value['login'])
-              $('#edit_senha').val(value['senha'])
-              $('#edit_tipo').val(value['status'])
+              $('#edit_id').val(value['idveiculo'])
+              $('#edit_tipo').val(value['tipo'])
+              $('#edit_marca').val(value['marca'])
+              $('#edit_modelo').val(value['modelo'])
+              $('#edit_ano').val(value['ano'])
+              $('#edit_cor').val(value['cor'])
+              $('#edit_roda').val(value['roda'])
+              $('#edit_placa').val(value['placa'])
             });
 
             $('#editarmodal').modal('show')
@@ -351,17 +387,17 @@
         })
       })
 
-      $('.ativar_btn').click(function(e) {
-        e.preventDefault();
+      // $('.ativar_btn').click(function(e) {
+      //   e.preventDefault();
 
-        var usuario_id = $(this).closest('tr').find('.usuario_id').text();
+      //   var usuario_id = $(this).closest('tr').find('.usuario_id').text();
 
-        $('#ativar_id').val(usuario_id)
+      //   $('#ativar_id').val(usuario_id)
 
-        $('#ativarmodal').modal('show')
+      //   $('#ativarmodal').modal('show')
 
-        console.log(usuario_id)
-      })
+      //   console.log(usuario_id)
+      // })
 
 
       $('.novo_btn').click(function(e) {

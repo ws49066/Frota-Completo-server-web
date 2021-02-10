@@ -28,7 +28,7 @@
             <a href="#">Manutenção</a>
           </li>
           <li>
-            <a href="./checklist.html">Checklist</a>
+            <a href="./checklist.php">Checklist</a>
           </li>
           <li>
             <a href="./veiculos.php">Veiculos</a>
