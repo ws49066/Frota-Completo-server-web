@@ -21,6 +21,10 @@ if (isset($_POST['salvar_usuario'])) {
     $query = "INSERT INTO usuario (login,senha,nome,status,cnh,categoria,idveiculo) VALUES('$usuario','$password','$nome',1,'$cnh','$categoria','$veiculosLivres')";
     $query_run = mysqli_query($conn, $query);
 
+    $queryUpdateVeiculo = "UPDATE veiculo SET status=1 WHERE idveiculo='$veiculosLivres'";
+    $query_runner = mysqli_query($conn, $queryUpdateVeiculo);
+
+
     if ($query_run) {
       $_SESSION["status"] = "Usuario Cadastrado com Sucesso";
       header("location: ../frontend/pages/usuarios.php");

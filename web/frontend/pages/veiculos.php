@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-  <title>Veiculos</title>
+  <title>:: Veículos ::</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -112,12 +112,13 @@
                 <div class="form-group">
                   <label for="cor">Cor</label>
                   <select name="cor" id="cor" class="form-control">
-                  <option value="Amarelo">Amarelo</option>
+                  <option value="Amarelo">Amarela</option>
                   <option value="Azul">Azul</option>
+                  <option value="Branca">Branca</option>
                   <option value="Prata">Prata</option>
-                  <option value="Preto">Preto</option>
+                  <option value="Preta">Preta</option>
                   <option value="Verde">Verde</option>
-                  <option value="Vermelho">Vermelho</option>
+                  <option value="Vermelha">Vermelha</option>
                   </select>
                 </div>
                 <div class="form-group">
